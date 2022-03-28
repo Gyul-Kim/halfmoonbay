@@ -1,0 +1,115 @@
+<? include "useragent.html" ?>
+<!DOCTYPE html>
+<html lang="ko" data-useragent="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<? include "keywords.html" ?>
+<meta name="Resource-type" content="Document" />
+<meta property="og:type" content="website">
+<meta property="og:title" content="영덕 하프문베이">
+<meta property="og:description" content="영덕 풀빌라, 경북 풀빌라, 동해 풀빌라, 단체, 오션뷰, 루프탑, 개별스파, 카페">
+<meta property="og:keywords" content="영덕 풀빌라, 경북 풀빌라, 동해 풀빌라, 단체, 오션뷰, 루프탑, 개별스파, 카페">
+<meta property="og:image" content="https://gonylab8.speedgabia.com/halfmoonbay/m/main/1.jpg">
+<meta property="og:url" content="https://halfmoonbay.co.kr/">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/images.css" />
+<link rel="stylesheet" type="text/css" href="css/fullpage.css" />
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/fullpage.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body id="index" class="index">
+	<script type="text/javascript">
+	$(function(){ $(".popup .close").click(function(){$(this).parent(".popup").remove(); return false;}); });
+	</script>
+	<style type="text/css">
+	.popup1 {position:absolute;top:135px;right:50px;z-index:150;}
+	.popup2 {position:absolute;top:135px;right:410px;z-index:150;}
+	.close {position:absolute;top:0;right:0;}
+	</style>
+	
+	<!-- <div class="popup1 popup">
+		<a href="#" onclick="return false;"><img src="pop/pop_01.jpg" alt="" width="350" height="auto" /></a>
+		<a href="#" class="close"><img src="http://gonylab3.speedgabia.com/soom/pop/close.png" alt="닫기" width="50" height="35" /></a>
+	</div>
+	<div class="popup2 popup">
+		<a href="#" onclick="return false;"><img src="pop/pop_02.jpg" alt="" width="350" height="auto" /></a>
+		<a href="#" class="close"><img src="http://gonylab3.speedgabia.com/soom/pop/close.png" alt="닫기" width="50" height="35" /></a>
+	</div>	 -->
+  <? include "pop/pop.php" ?>
+
+	<script type="text/javascript">
+		$(function(){
+		//popup   
+		   popup_load('P22032515');
+		   function popup_load(member_code){                        
+			  $.ajax({
+			  url: 'https://popadm.headstone01.gethompy.com/new/popup_view.php?member_code='+member_code+'',
+			  type: 'get',
+			  async: false,
+			  crossDomain: false,
+			  dataType: 'text',
+				success: function(data){
+				 $("#view_load").html(data);
+				}
+			  });      
+		   }
+		});
+	</script>
+	<div id="view_load"></div>
+<!-- header -->
+<? include "header.html" ?>
+<!-- //header -->
+
+<div id="container">
+	<div class="idx_mov_ttl"></div>
+	<div id="fullpage">
+		<div id="mov" class="section">
+			<!--video id="MyVideo" src="https://player.vimeo.com/external/.hd.mp4?s=b7cbc67ccb9e4f7898608c54b5f122ba790b13eb&profile_id=169" autoplay loop muted height="100%"></video-->
+				<!-- iframe - movie -->
+				
+				<script type="text/javascript">
+				
+				</script>
+			<div class="MyFrame">
+				<iframe id="MyVideo" src="https://player.vimeo.com/video/687850070?autoplay=1&loop=1&background=1" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+				<div class="mov_bg"></div>
+			</div>
+		</div>
+		<div id="section01" class="section"></div>
+		<div id="section02" class="section"></div>
+		<div id="section03" class="section"></div>
+		<div id="section04" class="section"></div>
+		<div id="section05" class="section"></div>
+		<div id="section06" class="section"></div>
+		<div id="section07" class="section"></div>
+		<div id="section08" class="section"></div>
+		<div id="section09" class="section"></div>
+		<div id="section10" class="section"></div>
+		<div id="section11" class="section"></div>
+		<div id="section12" class="section"></div>
+		<div id="section13" class="section"></div>
+		<div id="mov" class="section">
+			<div id="movie">				
+				<div class="mv" style="position:absolute;height:auto;width:65%;top:-70px;left:50%;transform:translate(-50%);z-index:50;">
+					<iframe src="https://player.vimeo.com/video/687849925" width="100%" height="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				</div>
+				<div class="Frame_bg"></div>
+			</div>
+		</div>
+		<!-- footer -->
+		<? include "footer.html" ?>
+		<!-- //footer -->
+	</div>
+</div>
+	
+<!-- script -->
+<? include "script.html" ?>
+<!-- //script -->
+</body>
+</html>

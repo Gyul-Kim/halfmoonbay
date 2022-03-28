@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<? include "keywords.html" ?>
+<meta name="Resource-type" content="Document" />
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+<link rel="stylesheet" type="text/css" href="css/images.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	
+	<? if($_GET['table']=='notice'){ ?>
+		$(".tabs .snb > li").removeClass("active"); 
+		$(".tabs .snb > li").eq(0).addClass("active");
+		$("#Banner h2.ttls span").text("공지사항");
+		$("#Banner h2.ttls strong").text("NOTICE");
+		$(".thumbs iframe").attr("src","/board/bbs/board.php?bo_table=notice");
+	<? }else if($_GET['table']=='qa'){ ?>
+		$(".tabs .snb > li").removeClass("active"); 
+		$(".tabs .snb > li").eq(1).addClass("active");
+		$("#Banner h2.ttls span").text("후기 게시판");
+		$("#Banner h2.ttls strong").text("REVIEW");
+		$(".thumbs iframe").attr("src","/board/bbs/board.php?bo_table=qa");
+	<? } ?>
+	
+});
+</script>
+
+</head>
+<body id="community" class="table">
+<? include "header.html"; ?>
+
+<div id="container">
+	<div id="Banner"><h2 class="ttls"><div></div><span>공지사항</span><strong>NOTICE</strong></div>
+	<div class="content">
+		<div class="tabs">
+			<ul class="snb">
+				<li class="active"><a href="#">공지사항</a></li>
+				<li><a href="#">후기 게시판</a></li>
+			</ul>
+			
+			<div class="thumbs">
+				<iframe src="/board/bbs/board.php?bo_table=notice" width='100%' height='1200' frameborder="0"></iframe>
+			</div>
+		</div>
+	</div>
+</div>
+<footer id="footer">
+	<div class="fp-tableCell"></div>
+</footer>	
+	
+<!-- script -->
+<? include "script.html" ?>
+<!-- //script -->
+
+</body>
+</html>

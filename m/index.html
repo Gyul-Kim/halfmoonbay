@@ -1,0 +1,63 @@
+<!-- header -->
+<? include "header.html" ?>
+</head>
+<? include "gnb.html" ?>
+<!-- //header -->
+
+<!-- section -->
+<section id="index"><!--해당 contents가 들어가는 곳 -->
+	<script type="text/javascript">
+		$(function(){
+		//popup   
+		   popup_load('P2203316');
+		   function popup_load(member_code){                        
+			  $.ajax({
+			  url: 'https://popadm.headstone01.gethompy.com/new/popup_view.php?member_code='+member_code+'',
+			  type: 'get',
+			  async: false,
+			  crossDomain: false,
+			  dataType: 'text',
+				success: function(data){
+				 $("#view_load").html(data);
+				}
+			  });      
+		   }
+		});
+		</script>
+		<div id="view_load"></div>
+
+	<script type="text/javascript">
+		$(function(){ $(".popup .close").click(function(){$(this).parent(".popup").remove(); return false;}); });
+	</script>
+	
+	<style type="text/css">
+	.popup1 {position:absolute;top:170px;right:20px;z-index:150;}
+	.popup2 {position:absolute;top:590px;right:20px;z-index:150;}
+	.close {position:absolute;top:0;right:0;}
+	</style>
+	
+	<? include "../pop/pop.php" ?>
+	
+	<div class="section" id="visual">
+		<div><img src="http://gonylab8.speedgabia.com/halfmoonbay/m/main/1.jpg" alt="" width="100%" height="auto"/></div>
+		<div id="scroll"><a href="#"><img src="../images/scroll_b.jpg" alt="" width="59" height="68" /></a></div>
+	</div>
+	
+	<div class="section tx_txt" id="scroll_btm">
+		<h2><img src="../images/idx_mov_ttl_black.svg" alt="" width="100%" height="auto" /></h2>
+	</div>
+		
+	<div class="section movie">
+		<iframe src="https://player.vimeo.com/video/687850070" width="600" height="337" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+	</div>
+	<div class="section i-list"></div>	
+</section>
+<!-- //section -->
+
+<!-- //footer -->	
+<? include "footer.html" ?>
+<!-- //footer -->
+
+
+
+

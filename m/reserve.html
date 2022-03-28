@@ -1,0 +1,108 @@
+<!-- header -->
+<? include "header.html" ?>
+</head>
+<? include "gnb.html" ?>
+<!-- //header -->
+
+
+<script type="text/javascript">
+$(function(){
+	//실시간예약창 이동 이벤트
+	window.addEventListener("message", function processFn(event){
+	if(event.data == 'step2'){
+		$('html, body').animate({scrollTop:$(".tab_01").offset().top},500);
+	}else{
+		var bla = event.data; 
+		$('html, body').animate({scrollTop:bla + 400},500);
+	}},false);
+	
+	<? if($_GET['reserve']=='rv'){ ?>
+		$("#banner h2.ttls span").text("실시간예약");
+		$("#banner h2.ttls strong").text("RESERVATION");
+		$(".thumbs").hide(); $(".tab_01").show();
+		$(".content .snb > li").removeClass("active");
+		$(".content .snb > li").eq(0).addClass("active");
+	<? }else if($_GET['reserve']=='gd'){ ?>
+		$("#banner h2.ttls span").text("예약안내");
+		$("#banner h2.ttls strong").text("GUIDE");
+		$(".thumbs").hide(); $(".tab_02").show();
+		$(".content .snb > li").removeClass("active");
+		$(".content .snb > li").eq(1).addClass("active");
+	<? } ?>
+
+});
+</script>
+
+
+<!-- section -->
+<section id="reserve" class="table cnt"><!--해당 contents가 들어가는 곳 -->
+	
+	<div class="section" id="banner">
+		<h2 class="ttls"><div></div><span>실시간예약</span><strong>RESERVATION</strong></h2>
+	</div>
+	
+	<div class="section content">
+		<div class="tabs">
+			<ul class="snb">
+				<li class="active"><a href="#">실시간예약</a></li>
+				<li><a href="#">예약안내</a></li>
+			</ul>
+			
+			<div class="thumbs tab_01">
+				<iframe src="https://digitalnow.co.kr/reserve/calendarv2/halfmoonbay" width='100%' height='2300' frameborder=0></iframe>
+			</div>
+			
+			<div class="thumbs tab_02">
+				
+				<!-- 01. 객실 정보 및 요금 -->
+				<h2><img src="https://gonylab2.speedgabia.com/common/reserve_top_ttl.jpg" alt="" width="250" height="75" /></h2>
+				<div class="r_info_01">
+					<h4><img src="https://gonylab2.speedgabia.com/common/reserve_01_ttl.gif" alt="" width="140" height="22" /></h4>
+					<table border="1" summary="RESERVATION REFUND GUIDE" id="ROOM_CODE">
+						<thead>
+							<tr>
+								<th rowspan="2" colspan="2" id="room_" class="room_">객실명</th>
+								<th colspan="2" id="people" class="people">인원</th>
+								<th colspan="3" id="price_s" class="price">기본가</th>
+								<th colspan="3" id="price_m" class="price">준성수기</th>
+								<th rowspan="2" id="price_l" class="price">성수기</th>
+							</tr>
+							<tr>
+								<th id="normal">기준</th><th id="max">최대</th>
+								<th id="weekdays">일~목</th><th id="friday">금요일</th><th id="weekend">토요일</th>
+								<th id="weekdays">일~목</th><th id="friday">금요일</th><th id="weekend">토요일</th>
+							</tr>	
+						</thead>
+					</table>
+					<ul class="season"></ul>
+				</div>
+			
+				<!-- 02. 객실 이용시 확인사항 -->
+				<div class="r_info_02">
+					<h3><img src="https://gonylab2.speedgabia.com/common/reserve_02_ttl.gif" alt="" width="166" height="22" /></h3>
+					<ul class="ENTR_COMM"></ul>
+				</div>
+			
+				<!-- 03. 입금전 확인사항 -->
+				<div class="r_info_03">
+					<h3><img src="https://gonylab2.speedgabia.com/common/reserve_03_ttl.gif" alt="" width="137" height="22" /></h3>
+					<ul class="CNCL_COMM"></ul>
+					
+					<h3><img src="https://gonylab2.speedgabia.com/common/reserve_04_ttl.gif" alt="" width="137" height="22" /></h3>
+					<table border="1" summary="RESERVATION REFUND GUIDE" id="REFU_PRCE"></table>	
+				</div>
+		
+			</div>
+		</div>
+	</div>	
+
+</section>
+<!-- //section -->
+
+<!-- //footer -->	
+<? include "footer.html" ?>
+<!-- //footer -->
+
+
+
+
