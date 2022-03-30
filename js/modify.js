@@ -11,13 +11,13 @@ var url = "http://gonylab8.speedgabia.com/halfmoonbay"
 var img = [
 	//index 사용안함
 	[13],
-	//exterior 사용안함
+	//exterior
 	[9],
-	//room 사용안함
-	[16,15],
+	//room
+	[16,15,16,15,16,15],
 	//special
 	[9,3,5,6,3],
-	// cafe 사용안함
+	// cafe
 	[5],
 
 ]
