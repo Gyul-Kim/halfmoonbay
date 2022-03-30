@@ -6,19 +6,6 @@
 /* common */
 #container 						{position:relative;width:100%;height:100%;overflow:hidden;}
 
-/* banner */
-#travel #Banner 		{background:url(http://gonylab8.speedgabia.com/halfmoonbay/banner/1.jpg) no-repeat 50% 50%;background-size:cover;}
-#map #Banner 		{background:url(http://gonylab8.speedgabia.com/halfmoonbay/banner/2.jpg) no-repeat 50% 50%;background-size:cover;}
-#reserve #Banner 		{background:url(http://gonylab8.speedgabia.com/halfmoonbay/banner/3.jpg) no-repeat 50% 50%;background-size:cover;}
-#community #Banner 	{background:url(http://gonylab8.speedgabia.com/halfmoonbay/banner/4.jpg) no-repeat 50% 50%;background-size:cover;}
-#food #Banner 	{background:url(http://gonylab8.speedgabia.com/halfmoonbay/banner/2.jpg) no-repeat 50% 50%;background-size:cover;}
-
-/* thumbnail */
-#index .MyFrame iframe {background:url(http://gonylab8.speedgabia.com/halfmoonbay/thumbnail/full.jpg) no-repeat 50% 50%;background-size:cover;}
-#landscape .MyFrame iframe {background:url(http://gonylab8.speedgabia.com/halfmoonbay/thumbnail/about.jpg) no-repeat 50% 50%;background-size:cover;}
-#cafe .MyFrame iframe {background:url(http://gonylab8.speedgabia.com/halfmoonbay/thumbnail/cafe.jpg) no-repeat 50% 50%;background-size:cover;}
-
-
 /* MyFrame */
 .MyFrame 						{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;overflow:hidden;}
 .MyFrame #MyVideo		 			{min-width:100%;min-height:100%;width:auto;height:auto;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);object-fit:cover;}
@@ -137,6 +124,20 @@
 #map .infos p {display:inline-block; font-size:18px; line-height:1.25;}
 #map .infos p span {display: block; float:left; }
 #map .infos p span.method {width:200px;}
+/*------------------------------------------------------------------------------------------------*/
+/* room - prv */
+#room_pv .MyFrame:before {position:absolute;top:0;left:0;width:100%;height:100%;background:#000;content:"";z-index:1;opacity:0.2;}
+#room_pv .section .pv_ttl {position:absolute;top:50%;left:50%;width:800px;height:150px;margin:-75px 0 0 -400px;z-index:10;}
+#room_pv .section .pv_list {width:100%;height:100%;overflow:hidden;}
+#room_pv .section .pv_list li {float:left;width:25%;height:100%;}
+#room_pv .section .pv_list li a {position:relative;display:block;width:100%;height:100%;overflow:hidden;}
+#room_pv .section .pv_list li a .img {position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;}
+#room_pv .section .pv_list li a .img {
+	-webkit-transform: scale(1); -ms-transform: scale(1); transform: scale(1);
+	-webkit-transition: all 0.3s linear; -ms-transition: all 0.3s linear; transition: all 0.3s linear;
+}
+#room_pv .section .pv_list li a .img:before {position:absolute;top:0;left:0;width:100%;height:100%;background:#000;content:"";z-index:1;opacity:0.3;}
+#room_pv .section .pv_list li a img {position:absolute;top:50%;left:50%;margin:-100px 0 0 -150px;display:block;z-index:3;}
 
 /*------------------------------------------------------------------------------------------------*/
 /* room - detail */

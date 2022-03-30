@@ -33,23 +33,6 @@ $("#header #gnb > ul > li").hover(function(){
 /*---------------------------------------------------------------*/
 //index
 if($("body").is("#index") == true){
-	for(var i = 0; i < img[0][0]; i++){
-		$("#fullpage").append(
-			'<div id="' + (i + 1) + '" class="section" style="background-image:url('+ url + '/main/' + (i + 1) +'.jpg); background-size:cover;"></div>'
-		); 
-	}
-
-	$('<footer id="footer" class="section fp-auto-height"></footer>').appendTo("#fullpage");
-	$('#footer').before('<div id="mov_w" class="section"></div>"');
-	
-	$("#mov_w").append(
-		'<div id="movie">' +			
-			'<div class="mv" style="position:absolute;height:auto;width:65%;top:-70px;left:50%;transform:translate(-50%);z-index:50;">' +
-				'<iframe src="https://player.vimeo.com/video/687849925" width="100%" height="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>' +
-			'</div>' +
-			'<div class="Frame_bg"></div>' +
-		'</div>'
-	);
 	fullpage(800);
 
 	//1st movie
@@ -65,27 +48,20 @@ if($("body").is("#index") == true){
 		$("#movie iframe").css("height",window.outerWidth / 16 * 9);
 		$(window).resize(function(){$(".MyFrames iframe").css("height",window.outerWidth / 16 * 9);});
 	});
+;
+	
+
+/*---------------------------------------------------------------*/
+//video	
+}else if($("body").is("#video") == true){
+	parallax('',500);	
 	
 /*---------------------------------------------------------------*/		
 //landscape
-}else if($("body").is("#landscape") == true){
-	for(var i = 0; i < img[4][0]; i++){
-		$("#fullpage").append(
-			'<div id="' + (i + 1) + '" class="section" style="background-image:url('+ url + '/exterior/' + (i + 1) +'.jpg); background-size:cover;"></div>'
-		); 
-	} 
-	$('<footer id="footer" class="section fp-auto-height"></footer>').appendTo("#fullpage");
-	$('#footer').before('<div id="location" class="section"></div>"');
-	
-	$("#location").append(
-		'<h3></h3>' +
-		'<div class="map">' +
-			'<div style="font:normal normal 400 12px/normal dotum, sans-serif; width:1200px; height:632px; color:#333; position:relative"><div style="height: 600px;"><a href="https://map.kakao.com/?urlX=1034079.0&amp;urlY=789702.0&amp;name=%EA%B2%BD%EB%B6%81%20%EC%98%81%EB%8D%95%EA%B5%B0%20%EB%82%A8%EC%A0%95%EB%A9%B4%20%EA%B5%AC%EA%B3%84%EA%B8%B8%206&amp;map_type=TYPE_MAP&amp;from=roughmap" target="_blank"><img class="map" src="http://t1.daumcdn.net/roughmap/imgmap/c56da959ccf881b70ed68b70769fc6dc5a05680312a2f5c0c5bbb2961a1772cd" width="1198px" height="598px" style="border:1px solid #ccc;"></a></div><div style="overflow: hidden; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 0px 0px 2px 2px; background-color: rgb(249, 249, 249);"><a href="https://map.kakao.com" target="_blank" style="float: left;"><img src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png" width="72" height="16" alt="카카오맵" style="display:block;width:72px;height:16px"></a><div style="float: right; position: relative; top: 1px; font-size: 11px;"><a target="_blank" href="https://map.kakao.com/?from=roughmap&amp;eName=%EA%B2%BD%EB%B6%81%20%EC%98%81%EB%8D%95%EA%B5%B0%20%EB%82%A8%EC%A0%95%EB%A9%B4%20%EA%B5%AC%EA%B3%84%EA%B8%B8%206&amp;eX=1034079.0&amp;eY=789702.0" style="float:left;height:15px;padding-top:1px;line-height:15px;color:#000;text-decoration: none;">길찾기</a></div></div></div>' +
-		'</div>'
-	);
-
+}else if($("body").is("#landscape") == true){	
 	fullpage(800);
 	videoControl(video);
+	
 
 	$("#landscape h2").css({"opacity":"1","transform":"translateY(0)"});
 
@@ -202,36 +178,34 @@ if($("body").is("#index") == true){
 	});
 	parallax('',500);
 
-//rooms
-}else if($("body").is("#rooms") == true){ 	
-	// var num = num.slice(0, 2); $("body").addClass("room_" + num);
-	$("body").addClass("rooms" + numbering(detailPath));
-	
-	for(var i = 0; i < img[2][detailPath]; i++){
-		$("#fullpage").prepend(
-			'<div class="section" style="background-image:url('+ url + '/room/' + (detailPath + 1) + '/' + (i + 1) +'.jpg); background-size:cover;"></div>'
-		); 
-	} 
+//room - detail
+}else if($("body").is("#room") == true){ 	
+	var num = num.slice(0, 2); $("body").addClass("room_" + num);
+	// $("body").addClass("room_" + numbering(num));	
 	fullpage(800);
 	
 	//객실정보
 	$.getJSON('https://digitalnow.co.kr/reserve/pensionInfo/'+ rv_ttl +'/8',//실시간예약 객실정보 URL
 	function(data){
-				
-		var names = data.result[detailPath]["TYPE_NM_EN"];				//객실이름
-		var names_KR = data.result[detailPath]["TYPE_NM"];				//객실이름
-		var wdth = data.result[detailPath]["ROOM_EXTN"];				//객실평수
-				
-		var adlt = data.result[detailPath]["ADLT_BASE_PERS"];			//기준인원
-		var adlt_max = data.result[detailPath]["ADLT_MAX_PERS"];		//최대인원
-		var etc = data.result[detailPath]["ETC_DETL"];					//기타상세
 		
-		var types = data.result[detailPath]["ROOM_TYPE"];				//객실타입
-		var intr = data.result[detailPath]["INTERIOR"];				//비품안내
+		var cnt = val;
 		
-		var adlt_prce = data.result[detailPath]["ADLT_EXCS_PRCE"];		//추가요금 성인
-		var kids_prce = data.result[detailPath]["KIDS_EXCS_PRCE"];		//추가요금 아동
+		var names = data.result[cnt]["TYPE_NM_EN"];				//객실이름
+		var names_KR = data.result[cnt]["TYPE_NM"];				//객실이름
+		var wdth = data.result[cnt]["ROOM_EXTN"];				//객실평수
+				
+		var adlt = data.result[cnt]["ADLT_BASE_PERS"];			//기준인원
+		var adlt_max = data.result[cnt]["ADLT_MAX_PERS"];		//최대인원
+		var etc = data.result[cnt]["ETC_DETL"];					//기타상세
+		
+		var types = data.result[cnt]["ROOM_TYPE"];				//객실타입
+		var intr = data.result[cnt]["INTERIOR"];				//비품안내
+		
+		var adlt_prce = data.result[cnt]["ADLT_EXCS_PRCE"];		//추가요금 성인
+		var kids_prce = data.result[cnt]["KIDS_EXCS_PRCE"];		//추가요금 아동
 	
+		
+
 		$("#container").prepend(
 			'<div class="btn"><span>OceanView Place</span><strong>'+  names +'<em>(' + etc +')</em></strong><a href="#"><span>Detail View</span><b></b></a></div>' +
 			'<div class="info">' +
@@ -365,16 +339,8 @@ if($("body").is("#index") == true){
 
 // cafe
 }else if($("body").is("#cafe") == true) {
-	for(var i = 0; i < img[4][0]; i++){
-		$("#fullpage").append(
-			'<div id="' + (i + 1) + '" class="section" style="background-image:url('+ url + '/cafe/' + (i + 1) +'.jpg); background-size:cover;"></div>'
-		); 
-	} 
-	$('<footer id="footer" class="section fp-auto-height"></footer>').appendTo("#fullpage");
-
 	fullpage(800);
 	videoControl(video);
-
 
 	$("#cafe h2").css({"opacity":"1","transform":"translateY(0)"});
 
@@ -426,7 +392,6 @@ if($("body").is("#index") == true){
 		$(".info").fadeOut();
 		$(".cont_bg").css({"display":"none"});
 	});
-
 
 /*---------------------------------------------------------------*/
 //reserve	
