@@ -391,12 +391,6 @@ if($("body").is("#index") == true){
 			'<div class="cont_bg"></div>' 
 	);
 
-	// 처음 시작시 2초 켜졌다가 꺼지기
-	setTimeout(function() {
-		$("#container .info").css({"display":"none"});
-		$(".cont_bg").css({"display":"none"});
-	},8000);
-
 	$(".btn a").on("click",function(){
 		$(".info").fadeIn();
 		$(".info .inner,.info .close").css({
