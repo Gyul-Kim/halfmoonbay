@@ -58,17 +58,24 @@ $("#visual #scroll a").on("click",function(){
 //index
 	
 if($("section").is("#index") == true){
+	$("#visual").append("<div><img src='http://gonylab8.speedgabia.com/halfmoonbay/m/main/1.jpg' alt='' width='100%' height='auto'></div>");
+
 	for(var i = 1; i < img[0][0]; i++) {
 		$("#index .i-list").append(
 			'<div><img src="' + url +  '/m/main/' + (i + 1) + '.jpg" alt="" width="100%" height="auto"/></div>'
 		);
+	
 	}
+	console.log(img[0][0]);
 /* -------------------------------------------------------------------------------------------- */	
 //ladnscape
 }else if($("section").is("#landscape") == true){
-	for(var i = 0; i < img[0][1]; i++) {
+
+	$("#visual").append("<div><img src='http://gonylab8.speedgabia.com/halfmoonbay/m/exterior/1.jpg' alt='' width='100%' height='auto'></div>");
+
+	for(var i = 1; i < img[1][0]; i++) {
 		$("#landscape .i-list").append(
-			'<div><img src="' + url +  '/m/about/' + (i + 1) + '.jpg" alt="" width="100%" height="auto"/></div>'
+			'<div><img src="' + url +  '/m/exterior/' + (i + 1) + '.jpg" alt="" width="100%" height="auto"/></div>'
 		);
 	}
 	
@@ -83,24 +90,36 @@ if($("section").is("#index") == true){
 	});
 /* -------------------------------------------------------------------------------------------- */	
 //rooms
-}else if($("section").is("#room") == true){
+}else if($("section").is("#rooms") == true){
+	$("body").addClass("room_" + numbering(detailPath));
 	$.getJSON('https://digitalnow.co.kr/reserve/pensionInfo/'+ rv_ttl +'/8',//실시간예약 객실정보 URL
 	function(data){
-		
-		var cnt = val; 
-		
-		var names = data.result[cnt]["TYPE_NM"];				//객실이름
-		var wdth = data.result[cnt]["ROOM_EXTN"];				//객실평수
+			
+		var names = data.result[detailPath]["TYPE_NM"];				//객실이름
+		var wdth = data.result[detailPath]["ROOM_EXTN"];				//객실평수
 				
-		var adlt = data.result[cnt]["ADLT_BASE_PERS"];			//기준인원
-		var adlt_max = data.result[cnt]["ADLT_MAX_PERS"];		//최대인원
-		var etc = data.result[cnt]["ETC_DETL"];					//기타상세
+		var adlt = data.result[detailPath]["ADLT_BASE_PERS"];			//기준인원
+		var adlt_max = data.result[detailPath]["ADLT_MAX_PERS"];		//최대인원
+		var etc = data.result[detailPath]["ETC_DETL"];					//기타상세
 		
-		var types = data.result[cnt]["ROOM_TYPE"];				//객실타입
-		var intr = data.result[cnt]["INTERIOR"];				//비품안내
+		var types = data.result[detailPath]["ROOM_TYPE"];				//객실타입
+		var intr = data.result[detailPath]["INTERIOR"];				//비품안내
 		
-		var adlt_prce = data.result[cnt]["ADLT_EXCS_PRCE"];		//추가요금 성인
-		var kids_prce = data.result[cnt]["KIDS_EXCS_PRCE"];		//추가요금 아동
+		var adlt_prce = data.result[detailPath]["ADLT_EXCS_PRCE"];		//추가요금 성인
+		var kids_prce = data.result[detailPath]["KIDS_EXCS_PRCE"];		//추가요금 아동
+
+
+		for(var i = 0; i < 1; i++) {
+			$("#rooms #visual").append(
+				'<div><img src="' + url +  '/m/room/' + (detailPath + 1) + '/' + '1.jpg" alt="" width="100%" height="auto"/></div>'
+			);
+		}
+
+		for(var i = 1; i < img[2][detailPath]; i++) {
+			$("#rooms .i-list").append(
+				'<div><img src="' + url +  '/m/room/' + (detailPath + 1) + '/' + (i + 1) + '.jpg" alt="" width="100%" height="auto"/></div>'
+			);
+		}
 	
 		$(".info").prepend(
 			'<h2><span>OceanView Place</span>'+ names +'</h2>' +
@@ -154,6 +173,12 @@ if($("section").is("#index") == true){
 	});
 
 /*---------------------------------------------------------------*/	
+}else if($("section").is("#cafe") == true){
+	for(var i = 0; i < img[4][0]; i++){
+		$("#cafe .i-list").append(
+			'<div><img src="' + url + '/m/cafe/' + (i + 1) +'.jpg" alt="" width="100%" height="auto"/></div>'
+		);
+	}
 /* travel */
 }else if($("section").is("#travel") == true){
 	$.getJSON('https://digitalnow.co.kr/reserve/pensionInfo/'+ rv_ttl +'/10',//주변여행지 정보
