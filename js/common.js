@@ -8,7 +8,7 @@ document.write(
 + "<![endif]-->"
 );
 
-$(function(){
+$(function(){.
 /*---------------------------------------------------------------*/	
 //common
 var video = document.getElementById("MyVideo");
